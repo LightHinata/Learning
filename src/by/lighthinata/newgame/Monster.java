@@ -1,6 +1,6 @@
 package by.lighthinata.newgame;
 
-public class Monster extends Hero{
+public class Monster extends Opponent{
 
 	private Size size = Size.MEDIUM;
 	private ClassMonster classMonster = ClassMonster.ORDINARY;
@@ -31,7 +31,7 @@ public class Monster extends Hero{
 	}
 
 	@Override
-	public int attack(Hero target){
+	public int attack(Opponent target){
 		if (classMonster == ClassMonster.HALF_BOSS){
 			if(RNG.nextDouble() <= 0.2){
 				int damage = target.getHealth() / 5;

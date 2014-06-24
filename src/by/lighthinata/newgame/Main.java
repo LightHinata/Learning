@@ -6,8 +6,8 @@ import java.util.Scanner;
 
 public class Main {
 
-	public static void battle(Hero hero, Hero enemy) {
-		System.out.println(hero.toString() + " versus " + enemy.toString());
+	public static void battle(Opponent hero, Opponent enemy) {
+		System.out.println(hero.toString() + "\nversus\n" + enemy.toString());
 		System.out.println("Rules of the game:");
 		System.out.println("Hero can attack or block hits.");
 		System.out.println("Battle is starting!");
@@ -42,9 +42,9 @@ public class Main {
 
 	public static void main(String[] args) {
 		ResourceBundle rb = ResourceBundle.getBundle("by.lighthinata.newgame.game_options");
-		Hero hero = new Hero(rb.getString("HERO_NAME"), Integer.parseInt(rb.getString("HERO_HEALTH")));
+		Hero hero = new Hero(rb.getString("HERO_NAME"), Integer.parseInt(rb.getString("HERO_HEALTH")), Hero.Gender.valueOf(rb.getString("HERO_GENDER")), Hero.Race.valueOf(rb.getString("HERO_RACE")));
 		System.out.println("Greetings, " + hero.getName());
-		Hero enemy = new Monster(rb.getString("ENEMY_NAME"),
+		Monster enemy = new Monster(rb.getString("ENEMY_NAME"),
 				Integer.parseInt(rb.getString("ENEMY_HEALTH")),
 				Monster.Size.valueOf(rb.getString("ENEMY_SIZE")),
 				Monster.ClassMonster.valueOf(rb.getString("ENEMY_CLASSMONSTER")));

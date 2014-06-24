@@ -1,59 +1,47 @@
 package by.lighthinata.newgame;
-import java.util.Random;
 
-
-public class Hero {
-	private int health;
-	private String name;
-	private boolean block;
-
-	protected static final Random RNG = new Random();
-
-	public void setHealth (int health){
-		this.health = health;
+public class Hero extends Opponent {
+	private Gender gender = Gender.MALE;
+	private Race race = Race.HUMAN;
+	public enum Gender {
+		MALE, FEMALE
 	}
-	public int getHealth(){
-		return health;
+	public enum Race {
+		HUMAN, ELF, DWARF, DRAGON
 	}
-	public void setName(String name){
-		this.name = name;
-	}
-	public boolean getBlock() {
-		return block;
-	}
-	public void setBlock(boolean block){
-		this.block = block;
-	}
-	public String getName(){
-		return name;
-	}
-	public void receiveDamage(int damage){
-		if (block){
-				this.setHealth(this.getHealth() - Math.min(1, damage));
-		}
-		else{
-			this.setHealth(this.getHealth() - damage);
-		}
-	}
-	public int attack(Hero target){
-		if (block) {
-			return 0;
-		}
-		int damage = RNG.nextInt(4);
-		target.receiveDamage(damage);
-		return damage;
+	public Gender getGender() {
+		return gender;
 	}
 
-	public Hero(){
-		health = 20;
-		name = "Enemy";
-	}
-	public Hero(String name, int health){
-		this.name = name;
-		this.health = health;
+	public void setGender(Gender gender) {
+		this.gender = gender;
 	}
 
-	public String toString() {
-		return this.getClass().getSimpleName() + " "+ name + " (" + health + ") hp";
+	public Race getRace() {
+		return race;
+	}
+
+	public void setRace(Race race) {
+		this.race = race;
+	}
+
+	public String toString(){
+		return super.toString()
+				+ "\nGender: " + gender.toString().toLowerCase()
+				+ "\nRace: " + race.toString().toLowerCase();
+	}
+	public Hero() {
+		
+	}
+
+	public Hero(String name, int health) {
+		super(name, health);
+		
+	}
+	
+	public Hero(String name, int health, Gender gender, Race race){
+		super(name, health);
+		this.gender = gender;
+		this.race = race;
 	}
 }
