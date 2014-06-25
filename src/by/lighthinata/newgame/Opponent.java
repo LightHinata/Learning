@@ -2,7 +2,7 @@ package by.lighthinata.newgame;
 import java.util.Random;
 
 
-public class Opponent {
+public class Opponent implements Cloneable{
 	private int health;
 	private String name;
 	private boolean block;
@@ -48,6 +48,7 @@ public class Opponent {
 		health = 20;
 		name = "Enemy";
 	}
+	
 	public Opponent(String name, int health){
 		this.name = name;
 		
@@ -55,7 +56,15 @@ public class Opponent {
 			this.health = health;
 		}
 	}
-
+	@Override
+	public Opponent clone() throws CloneNotSupportedException{
+		Opponent opponent = (Opponent) super.clone();
+		opponent.block = block;
+		opponent.health = health;
+		opponent.name = name;
+		return opponent;
+	}
+	
 	public String toString() {
 		return this.getClass().getSimpleName() + " "+ name + " (" + health + " hp)";
 	}

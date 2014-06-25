@@ -44,4 +44,12 @@ public class Hero extends Opponent {
 		this.gender = gender;
 		this.race = race;
 	}
+	
+	@Override
+	public Hero clone() throws CloneNotSupportedException{
+		Hero hero = (Hero) super.clone();
+		hero.gender = gender;
+		hero.race = race;
+		return hero;
+	}
 }

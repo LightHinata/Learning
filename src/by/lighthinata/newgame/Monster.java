@@ -43,4 +43,12 @@ public class Monster extends Opponent{
 		}
 		return super.attack(target);
 	}
+	
+	@Override
+	public Monster clone() throws CloneNotSupportedException{
+		Monster monster = (Monster) super.clone();
+		monster.classMonster = classMonster;
+		monster.size = size;
+		return monster;
+	}
 }
