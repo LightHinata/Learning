@@ -19,6 +19,8 @@ public class Monster extends Opponent{
 		this.size = size;
 		this.classMonster = classMonster;
 	}
+	public Monster() {
+	}
 	public Size getSize() {
 		return size;
 	}

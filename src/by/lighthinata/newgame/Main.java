@@ -1,7 +1,11 @@
 package by.lighthinata.newgame;
 
+import java.util.ArrayList;
 import java.util.ResourceBundle;
 import java.util.Scanner;
+
+import by.lighthinata.newgame.Monster.ClassMonster;
+import by.lighthinata.newgame.Monster.Size;
 
 
 public class Main {
@@ -42,12 +46,30 @@ public class Main {
 
 	public static void main(String[] args) {
 		ResourceBundle rb = ResourceBundle.getBundle("by.lighthinata.newgame.game_options");
-		Hero hero = new Hero(rb.getString("HERO_NAME"), Integer.parseInt(rb.getString("HERO_HEALTH")), Hero.Gender.valueOf(rb.getString("HERO_GENDER")), Hero.Race.valueOf(rb.getString("HERO_RACE")));
-		System.out.println("Greetings, " + hero.getName());
-		Monster enemy = new Monster(rb.getString("ENEMY_NAME"),
-				Integer.parseInt(rb.getString("ENEMY_HEALTH")),
-				Monster.Size.valueOf(rb.getString("ENEMY_SIZE")),
-				Monster.ClassMonster.valueOf(rb.getString("ENEMY_CLASSMONSTER")));
+		Hero hero = new Hero(rb.getString("HERO_NAME"), 
+							Integer.parseInt(rb.getString("HERO_HEALTH")), 
+							Hero.Gender.valueOf(rb.getString("HERO_GENDER")), 
+							Hero.Race.valueOf(rb.getString("HERO_RACE")));
+		ArrayList<Monster> list = new ArrayList<>();
+		list.add(new Monster("Cyclops", 25, Size.BIG, ClassMonster.HALF_BOSS));
+		list.add(new Monster("Polynomial", 15, Size.MEDIUM, ClassMonster.ORDINARY));
+		list.add(new Monster("Злобака-кобелина", 25, Size.SMALL, ClassMonster.ORDINARY));
+		list.add(new Monster("Taurus", 22, Size.MEDIUM, ClassMonster.ORDINARY));
+		list.add(new Monster("Orc", 28, Size.BIG, ClassMonster.HALF_BOSS));
+		list.add(new Monster("Ogre", 23, Size.BIG, ClassMonster.HALF_BOSS));
+		System.out.println("Greetings, " + hero.getName() + "\nSelect your enemy: ");
+		for(int i = 0; i < list.size(); i++){
+			System.out.println(i + ": " + list.get(i).toString());
+		}
+		System.out.println("Enter number of the monster: ");
+		Scanner sc = new Scanner(System.in);
+		int input = sc.nextInt();
+		
+		Opponent enemy = list.get(input);
+//		Monster enemy = new Monster(rb.getString("ENEMY_NAME"),
+//									Integer.parseInt(rb.getString("ENEMY_HEALTH")),
+//									Monster.Size.valueOf(rb.getString("ENEMY_SIZE")),
+//									Monster.ClassMonster.valueOf(rb.getString("ENEMY_CLASSMONSTER")));
 		battle(hero, enemy);
 
 	}

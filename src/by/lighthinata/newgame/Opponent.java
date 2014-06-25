@@ -50,10 +50,13 @@ public class Opponent {
 	}
 	public Opponent(String name, int health){
 		this.name = name;
-		this.health = health;
+		
+		if(health > 0){
+			this.health = health;
+		}
 	}
 
 	public String toString() {
-		return this.getClass().getSimpleName() + " "+ name + " (" + health + ") hp";
+		return this.getClass().getSimpleName() + " "+ name + " (" + health + " hp)";
 	}
 }
