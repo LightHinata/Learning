@@ -57,12 +57,13 @@ public class Opponent implements Cloneable{
 		}
 	}
 	@Override
-	public Opponent clone() throws CloneNotSupportedException{
-		Opponent opponent = (Opponent) super.clone();
-		opponent.block = block;
-		opponent.health = health;
-		opponent.name = name;
-		return opponent;
+	public Opponent clone() {
+		try {
+			Opponent opponent = (Opponent) super.clone();
+			return opponent;
+		} catch (CloneNotSupportedException e) {
+			throw new AssertionError(e);
+		}
 	}
 	
 	public String toString() {
