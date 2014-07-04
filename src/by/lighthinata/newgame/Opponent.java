@@ -1,9 +1,11 @@
 package by.lighthinata.newgame;
+import java.io.Serializable;
 import java.util.Random;
 
 
-public class Opponent implements Cloneable{
+public class Opponent implements Cloneable, Serializable {
 	private int health;
+    private int maxHealth;
 	private String name;
 	private boolean block;
 
@@ -27,7 +29,14 @@ public class Opponent implements Cloneable{
 	public String getName(){
 		return name;
 	}
-	public void receiveDamage(int damage){
+    public int getMaxHealth() {
+        return maxHealth;
+    }
+    public void setMaxHealth(int maxHealth) {
+        this.maxHealth = maxHealth;
+    }
+
+    public void receiveDamage(int damage){
 		if (block){
 				this.setHealth(this.getHealth() - Math.min(1, damage));
 		}
@@ -65,6 +74,7 @@ public class Opponent implements Cloneable{
 			throw new AssertionError(e);
 		}
 	}
+
 	
 	public String toString() {
 		return this.getClass().getSimpleName() + " "+ name + " (" + health + " hp)";

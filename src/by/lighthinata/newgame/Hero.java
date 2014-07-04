@@ -3,6 +3,7 @@ package by.lighthinata.newgame;
 public class Hero extends Opponent {
 	private Gender gender = Gender.MALE;
 	private Race race = Race.HUMAN;
+    private int victories = 0;
 	public enum Gender {
 		MALE, FEMALE
 	}
@@ -12,7 +13,6 @@ public class Hero extends Opponent {
 	public Gender getGender() {
 		return gender;
 	}
-
 	public void setGender(Gender gender) {
 		this.gender = gender;
 	}
@@ -20,15 +20,18 @@ public class Hero extends Opponent {
 	public Race getRace() {
 		return race;
 	}
-
 	public void setRace(Race race) {
 		this.race = race;
 	}
 
+    public int getVictories(){ return victories;}
+    public void setVictories(int victories){ this.victories = victories;}
+
 	public String toString(){
 		return super.toString()
 				+ "\nGender: " + gender.toString().toLowerCase()
-				+ "\nRace: " + race.toString().toLowerCase();
+				+ "\nRace: " + race.toString().toLowerCase()
+                + "\nNumber of victories: " + getVictories();
 	}
 	public Hero() {
 		
@@ -47,7 +50,7 @@ public class Hero extends Opponent {
 	
 	@Override
 	public Hero clone() {
-		Hero hero = (Hero) super.clone();
-		return hero;
-	}
+        Hero hero = (Hero) super.clone();
+        return hero;
+    }
 }
