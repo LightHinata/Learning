@@ -13,7 +13,8 @@ public class HeroManager{
         while(true) {
             if (sc.hasNextInt()) {
                 int input = sc.nextInt();
-                if (input == 0) {hero.setGender(Hero.Gender.MALE); break;
+                if (input == 0) {hero.setGender(Hero.Gender.MALE);
+                    break;
                 } else if (input == 1) {
                     hero.setGender(Hero.Gender.FEMALE);
                     break;
@@ -53,7 +54,7 @@ public class HeroManager{
         return hero;
     }
 
-    public static void saveHero(Hero hero){
+        public static void saveHero(Hero hero){
         try {
             FileOutputStream fos = new FileOutputStream("hero.sav");
             ObjectOutputStream oos = new ObjectOutputStream(fos);

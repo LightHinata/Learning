@@ -12,7 +12,12 @@ public class Opponent implements Cloneable, Serializable {
 	protected static final Random RNG = new Random();
 
 	public void setHealth (int health){
-		this.health = health;
+        if(health < getMaxHealth()) {
+            this.health = health;
+        }
+        else{
+            this.health = getMaxHealth();
+        }
 	}
 	public int getHealth(){
 		return health;
